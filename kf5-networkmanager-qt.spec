@@ -2,17 +2,17 @@
 # Conditional build:
 %bcond_with	tests		# build without tests
 #
-%define		kdeframever	5.67
+%define		kdeframever	5.79
 %define		qtver		5.9.0
 %define		kfname		networkmanager-qt
 Summary:	Qt wrapper for NetworkManager DBus API
 Name:		kf5-%{kfname}
-Version:	5.67.0
+Version:	5.79.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	00b66a3798bf1abb074b4147ee0e5b7c
+# Source0-md5:	8925ca98dfe1ded943ccb7b67ab22d99
 URL:		http://www.kde.org/
 BuildRequires:	NetworkManager-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -74,9 +74,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%{_datadir}/qlogging-categories5/networkmanager-qt.categories
+%{_datadir}/qlogging-categories5/networkmanagerqt.categories
 %attr(755,root,root) %{_libdir}/libKF5NetworkManagerQt.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libKF5NetworkManagerQt.so.6
+%{_datadir}/qlogging-categories5/networkmanagerqt.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
@@ -84,4 +85,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/NetworkManagerQt
 %{_includedir}/KF5/networkmanagerqt_version.h
 %{_libdir}/cmake/KF5NetworkManagerQt
-%{_libdir}/qt5/mkspecs/modules/qt_NetworkManagerQt.pri
