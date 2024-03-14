@@ -2,31 +2,31 @@
 # Conditional build:
 %bcond_with	tests		# build without tests
 #
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		networkmanager-qt
 Summary:	Qt wrapper for NetworkManager DBus API
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	5c2f24c8e089e009acd7ca986de3cabf
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	125cce25aa060834898c3467f12a6741
 URL:		http://www.kde.org/
 BuildRequires:	NetworkManager-devel
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Network-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Network-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
 %if %{with tests}
-BuildRequires:	Qt6Gui-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
 %endif
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	ninja
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -75,19 +75,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.md
-%{_datadir}/qlogging-categories6/networkmanagerqt.categories
-%attr(755,root,root) %{_libdir}/libKF6NetworkManagerQt.so.*.*.*
-%ghost %{_libdir}/libKF6NetworkManagerQt.so.6
-%{_datadir}/qlogging-categories6/networkmanagerqt.renamecategories
-%dir %{_libdir}/qt6/qml/org/kde/networkmanager
-%{_libdir}/qt6/qml/org/kde/networkmanager/kde-qmlmodule.version
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/networkmanager/libnetworkmanagerqtqml.so
-%{_libdir}/qt6/qml/org/kde/networkmanager/networkmanagerqtqml.qmltypes
-%{_libdir}/qt6/qml/org/kde/networkmanager/qmldir
-
+%{_datadir}/qlogging-categories5/networkmanagerqt.categories
+%attr(755,root,root) %{_libdir}/libKF5NetworkManagerQt.so.*.*.*
+%ghost %{_libdir}/libKF5NetworkManagerQt.so.6
+%{_datadir}/qlogging-categories5/networkmanagerqt.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libKF6NetworkManagerQt.so
-%{_includedir}/KF6/NetworkManagerQt
-%{_libdir}/cmake/KF6NetworkManagerQt
+%{_libdir}/libKF5NetworkManagerQt.so
+%{_includedir}/KF5/NetworkManagerQt
+%{_libdir}/cmake/KF5NetworkManagerQt
